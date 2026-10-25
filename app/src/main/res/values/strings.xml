@@ -1,0 +1,32 @@
+<resources>
+    <string name="app_name">Bookface</string>
+    <string name="toolbar_title">Bookface</string>
+    <string name="action_settings">Settings</string>
+    <string name="action_refresh">Refresh</string>
+    <string name="action_back">Back</string>
+    <string name="action_forward">Forward</string>
+    <string name="action_clear_stats">Reset Statistics</string>
+
+    <!-- Error View -->
+    <string name="error_title">Unable to Load Page</string>
+    <string name="error_message">A network connection error occurred while connecting to Facebook. Please check your internet or retry.</string>
+    <string name="error_retry">Retry</string>
+    <string name="error_basic_fallback">Open Facebook Basic</string>
+
+    <!-- Settings Screen -->
+    <string name="settings_title">Bookface Settings</string>
+    <string name="settings_filter_header">Ad &amp; Tracker Protection</string>
+    <string name="settings_enable_filter_title">Enable Best-Effort Filtering</string>
+    <string name="settings_enable_filter_summary">Intercepts known analytics, third-party trackers, and telemetry beacons. Essential page and video playback requests are never blocked.</string>
+
+    <string name="settings_stats_header">Filter Statistics</string>
+    <string name="stat_blocked_requests">Blocked Requests</string>
+    <string name="stat_total_requests">Total Observed Requests</string>
+    <string name="stat_blocked_ratio">Interception Rate</string>
+    <string name="stats_disclaimer">Notice: The blocked count represents requests matched by the filter rules, not verified individual advertisements. Facebook serves many ads and videos from the same infrastructure, which cannot be distinguished without breaking media playback.</string>
+
+    <string name="settings_diagnostics_header">Filter Diagnostics &amp; Rules</string>
+    <string name="diagnostics_summary">Configured with conservative rules targeting known tracking scripts, Facebook Pixel (/tr/), telemetry beacons (/ajax/bz), and third-party ad networks while strictly preserving login, account authentication, and video stream delivery.</string>
+
+    <string name="clear_stats_confirm">Statistics have been reset to zero.</string>
+</resources>

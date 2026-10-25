@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="Theme.Bookface" parent="Theme.Material3.Dark.NoActionBar">
+        <item name="colorPrimary">@color/bookface_orange</item>
+        <item name="colorOnPrimary">@color/white</item>
+        <item name="colorPrimaryContainer">@color/bookface_surface_elevated</item>
+        <item name="colorOnPrimaryContainer">@color/bookface_orange_light</item>
+        <item name="colorSecondary">@color/bookface_orange_light</item>
+        <item name="android:windowBackground">@color/bookface_dark_bg</item>
+        <item name="colorSurface">@color/bookface_surface</item>
+        <item name="colorOnSurface">@color/bookface_text_primary</item>
+        <item name="android:statusBarColor">@color/bookface_dark_bg</item>
+        <item name="android:navigationBarColor">@color/bookface_dark_bg</item>
+    </style>
+
+    <style name="Theme.MyApplication" parent="Theme.Bookface" />
+</resources>

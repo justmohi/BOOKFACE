@@ -1,0 +1,7 @@
+{
+  "name": "Bookface",
+  "description": "Native Android WebView wrapper for Facebook mobile with ad and tracker filtering, privacy controls, and statistics.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
+

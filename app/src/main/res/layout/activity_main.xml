@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mainCoordinator"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bookface_dark_bg">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appBarLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/bookface_dark_bg"
+        app:elevation="0dp">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/mainToolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="@color/bookface_surface"
+            app:titleTextColor="@color/bookface_text_primary"
+            app:navigationIcon="@null">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:paddingEnd="12dp"
+                tools:ignore="RtlSymmetry">
+
+                <!-- Title & Status -->
+                <LinearLayout
+                    android:id="@+id/titleContainer"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentStart="true"
+                    android:gravity="center_vertical"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/toolbarTitle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/toolbar_title"
+                        android:textColor="@color/bookface_orange"
+                        android:textSize="20sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/statusSubtitle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Shield Active"
+                        android:textColor="@color/bookface_shield_active"
+                        android:textSize="11sp" />
+                </LinearLayout>
+
+                <!-- Action buttons container -->
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentEnd="true"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <!-- Shield stats button with badge -->
+                    <FrameLayout
+                        android:id="@+id/btnShieldStats"
+                        android:layout_width="44dp"
+                        android:layout_height="44dp"
+                        android:background="?attr/selectableItemBackgroundBorderless"
+                        android:contentDescription="@string/settings_stats_header">
+
+                        <ImageView
+                            android:id="@+id/ivShieldIcon"
+                            android:layout_width="24dp"
+                            android:layout_height="24dp"
+                            android:layout_gravity="center"
+                            android:contentDescription="@string/settings_stats_header"
+                            android:src="@drawable/ic_shield"
+                            app:tint="@color/bookface_shield_active" />
+
+                        <TextView
+                            android:id="@+id/tvBlockedBadge"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="top|end"
+                            android:layout_marginTop="4dp"
+                            android:layout_marginEnd="2dp"
+                            android:background="@drawable/bg_badge"
+                            android:gravity="center"
+                            android:minWidth="16dp"
+                            android:minHeight="16dp"
+                            android:paddingHorizontal="4dp"
+                            android:text="0"
+                            android:textColor="@color/white"
+                            android:textSize="9sp"
+                            android:textStyle="bold"
+                            android:visibility="gone" />
+                    </FrameLayout>
+
+                    <!-- Refresh button -->
+                    <ImageButton
+                        android:id="@+id/btnRefresh"
+                        android:layout_width="44dp"
+                        android:layout_height="44dp"
+                        android:background="?attr/selectableItemBackgroundBorderless"
+                        android:contentDescription="@string/action_refresh"
+                        android:src="@drawable/ic_refresh"
+                        app:tint="@color/bookface_text_primary" />
+
+                    <!-- Settings button -->
+                    <ImageButton
+                        android:id="@+id/btnSettings"
+                        android:layout_width="44dp"
+                        android:layout_height="44dp"
+                        android:background="?attr/selectableItemBackgroundBorderless"
+                        android:contentDescription="@string/action_settings"
+                        android:src="@drawable/ic_settings"
+                        app:tint="@color/bookface_text_primary" />
+                </LinearLayout>
+            </RelativeLayout>
+        </androidx.appcompat.widget.Toolbar>
+
+        <!-- Loading Progress Bar -->
+        <ProgressBar
+            android:id="@+id/loadingProgressBar"
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="match_parent"
+            android:layout_height="3dp"
+            android:indeterminate="false"
+            android:max="100"
+            android:progressBackgroundTint="@color/bookface_surface"
+            android:progressTint="@color/bookface_orange"
+            android:visibility="gone" />
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <!-- Main Content Area -->
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+        <!-- Pull to refresh wrapper -->
+        <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+            android:id="@+id/swipeRefreshLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <WebView
+                android:id="@+id/facebookWebView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/bookface_dark_bg" />
+
+        </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
+        <!-- Network & Loading Error View (Hidden by default) -->
+        <LinearLayout
+            android:id="@+id/errorViewContainer"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/bookface_dark_bg"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:padding="28dp"
+            android:visibility="gone">
+
+            <ImageView
+                android:id="@+id/ivErrorIcon"
+                android:layout_width="64dp"
+                android:layout_height="64dp"
+                android:contentDescription="@null"
+                android:src="@drawable/ic_cloud_off"
+                app:tint="@color/bookface_error" />
+
+            <TextView
+                android:id="@+id/tvErrorTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="@string/error_title"
+                android:textColor="@color/bookface_text_primary"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tvErrorMessage"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:gravity="center"
+                android:text="@string/error_message"
+                android:textColor="@color/bookface_text_secondary"
+                android:textSize="14sp" />
+
+            <Button
+                android:id="@+id/btnRetry"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:background="@drawable/bg_orange_button"
+                android:minWidth="160dp"
+                android:text="@string/error_retry"
+                android:textAllCaps="false"
+                android:textColor="@color/white"
+                android:textStyle="bold"
+                app:backgroundTint="@color/bookface_orange" />
+
+            <Button
+                android:id="@+id/btnBasicFallback"
+                style="@style/Widget.Material3.Button.TextButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="@string/error_basic_fallback"
+                android:textColor="@color/bookface_orange_light" />
+
+        </LinearLayout>
+
+    </FrameLayout>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
